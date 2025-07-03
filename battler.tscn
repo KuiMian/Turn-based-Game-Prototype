@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnmst6i3hsmtt"]
+
+[ext_resource type="Script" uid="uid://ckfnffbcbmvb" path="res://battler.gd" id="1_7jvhn"]
+[ext_resource type="Texture2D" uid="uid://bv65c72n1xm4d" path="res://icon.svg" id="2_e008c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e008c"]
+size = Vector2(128, 128)
+
+[node name="Battler" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_e008c")
+script = ExtResource("1_7jvhn")
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 0
+
+[node name="Colli" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_e008c")
+
+[node name="GlobalPos" type="Marker2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -16.0
+offset_top = -96.0
+offset_right = 24.0
+offset_bottom = -73.0
+theme_override_font_sizes/font_size = 32

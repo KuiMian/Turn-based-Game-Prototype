@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfivy3p7f2paq"]
+
+[ext_resource type="Script" uid="uid://dag478sb7rc0u" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cnmst6i3hsmtt" path="res://battler.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cldvl5oyhqrdj" path="res://target_selector.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dxc080sr1pxrt" path="res://selection_notion.tscn" id="4_1bvp3"]
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("players", "enemies", "turn_queue")]
+script = ExtResource("1_h2yge")
+players = [NodePath("TurnQueue/Battler"), NodePath("TurnQueue/Battler2")]
+enemies = [NodePath("TurnQueue/Battler3"), NodePath("TurnQueue/Battler4"), NodePath("TurnQueue/Battler5")]
+turn_queue = NodePath("TurnQueue")
+
+[node name="TurnQueue" type="Node2D" parent="."]
+
+[node name="Battler" parent="TurnQueue" instance=ExtResource("1_ig7tw")]
+position = Vector2(896, 192)
+is_player = true
+id = "P1"
+pos = Vector2(896, 192)
+speed = 3
+
+[node name="Battler2" parent="TurnQueue" instance=ExtResource("1_ig7tw")]
+position = Vector2(896, 448)
+is_player = true
+id = "P2"
+pos = Vector2(896, 448)
+speed = 2
+
+[node name="Battler3" parent="TurnQueue" instance=ExtResource("1_ig7tw")]
+position = Vector2(256, 128)
+id = "E1"
+pos = Vector2(256, 128)
+speed = 6
+
+[node name="Battler4" parent="TurnQueue" instance=ExtResource("1_ig7tw")]
+position = Vector2(256, 320)
+id = "E2"
+pos = Vector2(256, 320)
+
+[node name="Battler5" parent="TurnQueue" instance=ExtResource("1_ig7tw")]
+position = Vector2(256, 512)
+id = "E3"
+pos = Vector2(256, 512)
+
+[node name="PlayerPos" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="PlayerPos"]
+position = Vector2(896, 192)
+
+[node name="Marker2D2" type="Marker2D" parent="PlayerPos"]
+position = Vector2(896, 448)
+
+[node name="EnemyPos" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="EnemyPos"]
+position = Vector2(256, 128)
+
+[node name="Marker2D2" type="Marker2D" parent="EnemyPos"]
+position = Vector2(256, 320)
+
+[node name="Marker2D3" type="Marker2D" parent="EnemyPos"]
+position = Vector2(256, 512)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TargetSelector" parent="UI" instance=ExtResource("2_0xm2m")]
+
+[node name="SelectionNotion" parent="UI" instance=ExtResource("4_1bvp3")]
